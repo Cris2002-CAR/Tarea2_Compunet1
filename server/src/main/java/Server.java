@@ -5,8 +5,8 @@ public class Server {
     public static void main(String[] args) {
         int numberOfWorkers = 5;
 
-        try (Communicator communicator = Util.initialize(args)) {
-            ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints("MonteCarloPiAdapter", "default -p 10000");
+        try (Communicator communicator = Util.initialize(args, "config.server")) {
+            ObjectAdapter adapter = communicator.createObjectAdapter("MonteCarloPiAdapter");
 
             MasterI master = new MasterI(1000000, numberOfWorkers);
             adapter.add(master, Util.stringToIdentity("master"));
