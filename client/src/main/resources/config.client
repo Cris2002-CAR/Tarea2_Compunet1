@@ -1,4 +1,11 @@
 
-master.Proxy=master:tcp -p 10000
+# Proxy para el maestro
+master.proxy=master:default -p 10000 -h localhost
+
+# Proxy para los trabajadores
+worker.proxy=worker:default -p 10000 -h localhost
+
+# Definición del proxy para el PiRequester
+piRequester.proxy=PiRequester:default -p 10000 -h localhost
 
 Ice.Default.Host=localhost
